@@ -26,9 +26,9 @@ function FetchMovies() {
 
   return (
     <div className="row">
-      <Searchbox searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Searchbox setSearchValue={setSearchValue} />
       {popular.map((movie) => {
-        return <Movies key={movie.id} movie={movie} />;
+        return <Movies key={movie.id} movie={movie}/>;
       })}
     </div>
   );
