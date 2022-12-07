@@ -1,5 +1,6 @@
 import Movies from "./Movies";
 import React, { useState, useEffect } from "react";
+import Searchbox from "./SearchBox";
 
 function FetchMovies() {
   const [popular, setPopular] = useState([]);
@@ -23,9 +24,9 @@ function FetchMovies() {
     }
   };
 
-
   return (
     <div className="row">
+      <Searchbox searchValue={searchValue} setSearchValue={setSearchValue} />
       {popular.map((movie) => {
         return <Movies key={movie.id} movie={movie} />;
       })}
