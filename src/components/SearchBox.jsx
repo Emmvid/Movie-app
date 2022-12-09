@@ -1,13 +1,20 @@
 import React from "react";
 import "./searchbox.css";
-
+//(event) => props.setSearchValue(event.target.value)
 const Searchbox = (props) => {
+  const resetInputField = () => {
+    setSearchValue("christmas")
+  }
+
+  const callSearchFunction = (event) => {props.setSearchValue(event.target.value);
+    resetInputField();
+  }
   return (
     <div>
       <input
         className="form-control"
         value={props.value}
-        onChange={(event) => props.setSearchValue(event.target.value)}
+        onChange={callSearchFunction}
         placeholder="Type to search"
       />
     </div>
