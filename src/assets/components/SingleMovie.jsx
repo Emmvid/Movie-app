@@ -27,7 +27,7 @@ const SingleMovie = () => {
             )
     }, [])
      if (error) {
-         return <div>Error: {error.message}</div>;
+         return <div>Sorry, there has been an error!</div>;
      }
     if (!isLoaded) {
          return <div>Loading...</div>;
@@ -35,13 +35,16 @@ const SingleMovie = () => {
     
     if (movie) {
         return (
-            <div className='SingleMovie'>
+            <div className='SingleMoviecontainer'>
+                <div className='singleMovie'>
+                    <img src={"https://image.tmdb.org/t/p/w500"+ movie.backdrop_path} alt={movie.title} />
                 <h1>{movie.title}</h1>
                 <p> release date: {movie.release_date}</p>
                 <p>Storyline: {movie.overview}</p>
                 <Link to={'/'}>
                 <button className='btn'>Back to home</button> 
                 </Link>
+                </div>
             </div>
         );
     }
