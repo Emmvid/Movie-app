@@ -1,10 +1,13 @@
-import Movies from "./Movies";
+import Movies from "../pages/Movies";
 import React, { useState, useEffect } from "react";
 import Searchbox from "./SearchBox";
+import RecentlyViewed from "./RecentlyViewed";
 
 function FetchMovies() {
   const [popular, setPopular] = useState([]);
   const [searchValue, setSearchValue] = useState("christmas");
+
+  const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     fetchMovies(searchValue);
@@ -24,13 +27,29 @@ function FetchMovies() {
     }
   };
 
+  const addFavouriteMovie = (movie) => {
+    const newFavouriteList = [...favourites, movie];
+    setFavourites(newFavouriteList);
+  };
+
   return (
-    <div className="row">
+    <main>
       <Searchbox setSearchValue={setSearchValue} />
-      {popular && popular.map((movie) => {
-        return <Movies key={movie.id} movie={movie}/>;
-      })}
-    </div>
+      <div className="row">
+        {popular &&
+          popular.map((movie) => {
+            return (
+              <Movies
+                key={movie.id}
+                movie={movie}
+                favouriteComponent={RecentlyViewed}
+                handleFavouritesClick={addFavouriteMovie}
+              />
+            );
+          })}
+      </div>
+      <RecentlyViewed />
+    </main>
   );
 }
 
