@@ -1,0 +1,73 @@
+.row {
+  display: flex;
+  overflow-x: scroll;
+  margin: 2rem 1rem 2rem 1rem;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+main {
+  margin-top: 5px;
+}
+.movies {
+  height: auto;
+  width: 250px;
+  padding: 3px;
+  margin-left: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: black;
+  background-color: rgb(61, 140, 152);
+  border-radius: 10px;
+}
+
+.movies > img {
+  width: fit-content;
+  height: 300px;
+  border-radius: 10px;
+}
+
+
+
+/* Buttons */
+.btn {
+  background-image: linear-gradient(
+    to right,
+    #aa076b 0%,
+    #61045f 51%,
+    #aa076b 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 5px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+.sidescroll-button {
+  justify-content: space-between;
+
+}
+/* SINGLE-MOVIE */
+
+.SingleMoviecontainer {
+  color: black;
+  display: flex;
+}
+.singleMovie {
+  flex-direction: column;
+  margin: auto;
+  width: 75%;
+}
