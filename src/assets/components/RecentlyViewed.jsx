@@ -1,9 +1,15 @@
-import React from 'react'
+import Movies from "../pages/Movies";
 
-function RecentlyViewed() {
+export default function RecentlyViewed({ recentlyViewed }) {
   return (
-    <div> <h1>RecentlyViewed:</h1></div>
-  )
-}
+    <section className="row">
+      <h1>Recently viewed:</h1>
+      <div className="row">
 
-export default RecentlyViewed
+        {recentlyViewed.map((movie) => {
+          return <Movies key={movie.id} movie={movie} />;
+        })}
+        </div>
+    </section>
+  );
+}

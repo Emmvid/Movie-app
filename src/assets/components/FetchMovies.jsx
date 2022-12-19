@@ -1,17 +1,14 @@
 import Movies from "../pages/Movies";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Searchbox from "./SearchBox";
 import RecentlyViewed from "./RecentlyViewed";
+import Footer from "../pages/Footer";
+import "../pages/movies.css";
+import Heading from "../pages/Heading";
 
-function FetchMovies() {
+function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
   const [popular, setPopular] = useState([]);
   const [searchValue, setSearchValue] = useState("christmas");
-
-  const [favourites, setFavourites] = useState([]);
-
-  useEffect(() => {
-    fetchMovies(searchValue);
-  }, [searchValue]);
 
   const fetchMovies = async (searchValue) => {
     // Hämtar filmerna
@@ -19,20 +16,26 @@ function FetchMovies() {
     const url = `https://api.themoviedb.org/3/search/movie/?api_key=${apiKey}&query=${searchValue}&language=en-US&page=1&include_adult=false`;
     const data = await fetch(url);
     const movies = await data.json();
-    console.log(movies);
     setPopular(movies.results);
 
     if (movies.Search) {
       setPopular(movies.Search);
     }
+    (error) => {
+    
+      setError(error);
+  }
+  if (error) {
+    return <div>Sorry, there has been an error!</div>;
+}
   };
 
-  const addFavouriteMovie = (movie) => {
-    const newFavouriteList = [...favourites, movie];
-    setFavourites(newFavouriteList);
-  };
+  useEffect(() => {
+    fetchMovies(searchValue);
+  }, [searchValue]);
 
   return (
+    <>
     <main>
       <Searchbox setSearchValue={setSearchValue} />
       <div className="row">
@@ -42,14 +45,14 @@ function FetchMovies() {
               <Movies
                 key={movie.id}
                 movie={movie}
-                favouriteComponent={RecentlyViewed}
-                handleFavouritesClick={addFavouriteMovie}
+                addRecentlyViewed={addRecentlyViewed}
               />
             );
           })}
       </div>
-      <RecentlyViewed />
+      <RecentlyViewed recentlyViewed={recentlyViewed} />
     </main>
+    </>
   );
 }
 

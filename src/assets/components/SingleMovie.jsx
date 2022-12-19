@@ -6,8 +6,6 @@ import "../pages/movies.css"
 
 const SingleMovie = () => {
    let {id} = useParams()
-
-   console.log(id)
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [movie, setMovie] = useState([]);
@@ -16,7 +14,6 @@ const SingleMovie = () => {
             .then(res => res.json())
             .then(
                 (data) => {
-                    console.log(data);
                     setMovie(data);
                     setIsLoaded(true);
                 },

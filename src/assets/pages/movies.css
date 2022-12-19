@@ -10,7 +10,6 @@
 main {
   margin-top: 5px;
 }
-
 .movies {
   height: auto;
   width: 250px;
@@ -57,7 +56,10 @@ main {
   color: #fff;
   text-decoration: none;
 }
+.sidescroll-button {
+  justify-content: space-between;
 
+}
 /* SINGLE-MOVIE */
 
 .SingleMoviecontainer {
