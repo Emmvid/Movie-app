@@ -21,7 +21,7 @@ function App() {
   }
   return (
     <Router>
-      <Heading name="the Movie page" home="home" about ="about"/>
+      <Heading name="the Movie page" home="home" about="about"/>
       <Routes>
         <Route path="/" element={<FetchMovies addRecentlyViewed={addRecentlyViewed}
                 recentlyViewed={recentlyViewed} />} />
