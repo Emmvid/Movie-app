@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ErrorPage from "./assets/pages/error-page";
 import Heading from "./assets/pages/Heading";
@@ -29,6 +28,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
         <Route path="/movie/:id" element={<SingleMovie />} />
       </Routes>
+      <Heading name="Made by Emma Vidarsson" home="home" about="about" />
     </Router>
     
   );

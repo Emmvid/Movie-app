@@ -31,13 +31,15 @@ const SingleMovie = () => {
     }  
     
     if (movie) {
+        const noMovie ="Sorry, no details were provided for this film"
+        const noPicture = "https://images.pexels.com/photos/1040159/pexels-photo-1040159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         return (
             <div className='SingleMoviecontainer'>
                 <div className='singleMovie'>
-                    <img src={"https://image.tmdb.org/t/p/w500"+ movie.backdrop_path} alt={movie.title} />
+                    <img src={`https://image.tmdb.org/t/p/w500"+ ${movie.backdrop_path}` || noPicture} alt={movie.title} />
                 <h1>{movie.title}</h1>
-                <p> release date: {movie.release_date}</p>
-                <p>Storyline: {movie.overview}</p>
+                <p> release date: {movie.release_date || noMovie }</p>
+                <p>Storyline: {movie.overview || noMovie }</p>
                 <Link to={'/'}>
                 <button className='btn'>Back to home</button> 
                 </Link>

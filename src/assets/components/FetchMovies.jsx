@@ -1,12 +1,13 @@
 import Movies from "../pages/Movies";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Searchbox from "./SearchBox";
 import RecentlyViewed from "./RecentlyViewed";
 import "../pages/movies.css";
+import PopularMovies from "./PopularMovies";
 
 
 function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
-  const [popular, setPopular] = useState([]);
+  const [fetched, setFetched] = useState([]);
   const [searchValue, setSearchValue] = useState("christmas");
 
   const fetchMovies = async (searchValue) => {
@@ -15,10 +16,10 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
     const url = `https://api.themoviedb.org/3/search/movie/?api_key=${apiKey}&query=${searchValue}&language=en-US&page=1&include_adult=false`;
     const data = await fetch(url);
     const movies = await data.json();
-    setPopular(movies.results);
+    setFetched(movies.results);
 
     if (movies.Search) {
-      setPopular(movies.Search);
+      setFetched(movies.Search);
     }
    
   };
@@ -27,13 +28,15 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
     fetchMovies(searchValue);
   }, [searchValue]);
 
+ 
+
   return (
     <>
     <main>
       <Searchbox setSearchValue={setSearchValue} />
       <div className="row">
-        {popular &&
-          popular.map((movie) => {
+        {fetched &&
+          fetched.map((movie) => {
             return (
               <Movies
                 key={movie.id}
@@ -43,6 +46,7 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
             );
           })}
       </div>
+      <PopularMovies addRecentlyViewed={addRecentlyViewed}/>
       <RecentlyViewed recentlyViewed={recentlyViewed} />
     </main>
     </>
