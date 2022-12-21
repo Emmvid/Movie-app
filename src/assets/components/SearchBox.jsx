@@ -1,14 +1,8 @@
 import React from "react";
 import "./searchbox.css";
-//(event) => props.setSearchValue(event.target.value)
 const Searchbox = (props) => {
-  const resetInputField = () => {
-    setSearchValue("christmas");
-  };
-
   const callSearchFunction = (event) => {
     props.setSearchValue(event.target.value);
-    resetInputField();
   };
   return (
     <div className="searchbox">

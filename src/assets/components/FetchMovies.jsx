@@ -1,46 +1,44 @@
 import Movies from "../pages/Movies";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Searchbox from "./SearchBox";
 import RecentlyViewed from "./RecentlyViewed";
-import Footer from "../pages/Footer";
 import "../pages/movies.css";
-import Heading from "../pages/Heading";
+import PopularMovies from "./PopularMovies";
+import Heading from "./Heading";
+
 
 function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
-  const [popular, setPopular] = useState([]);
+  const [fetched, setFetched] = useState([]);
   const [searchValue, setSearchValue] = useState("christmas");
 
   const fetchMovies = async (searchValue) => {
     // Hämtar filmerna
-    const apiKey = "cea77006d0fb470be9cf5312be7293d5";
+    const apiKey = import.meta.env.VITE_API_KEY;
     const url = `https://api.themoviedb.org/3/search/movie/?api_key=${apiKey}&query=${searchValue}&language=en-US&page=1&include_adult=false`;
     const data = await fetch(url);
     const movies = await data.json();
-    setPopular(movies.results);
+    setFetched(movies.results);
 
     if (movies.Search) {
-      setPopular(movies.Search);
+      setFetched(movies.Search);
     }
-    (error) => {
-    
-      setError(error);
-  }
-  if (error) {
-    return <div>Sorry, there has been an error!</div>;
-}
+   
   };
 
   useEffect(() => {
     fetchMovies(searchValue);
   }, [searchValue]);
 
+ 
+
   return (
     <>
     <main>
       <Searchbox setSearchValue={setSearchValue} />
+      <Heading name={"Search results:"} />
       <div className="row">
-        {popular &&
-          popular.map((movie) => {
+        {fetched &&
+          fetched.map((movie) => {
             return (
               <Movies
                 key={movie.id}
@@ -50,6 +48,9 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
             );
           })}
       </div>
+      <Heading name={"Popular Movies:"} />
+      <PopularMovies addRecentlyViewed={addRecentlyViewed}/>
+      <Heading name={"Recently viewed:"} />
       <RecentlyViewed recentlyViewed={recentlyViewed} />
     </main>
     </>
