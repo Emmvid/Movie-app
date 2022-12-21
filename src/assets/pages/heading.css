@@ -1,6 +1,7 @@
 .nav-container {
-  height: 80px;
   width: 95%;
+  height: auto;
+  overflow: hidden;
   border-radius: 50px;
   margin-right: 10rem;
   display: flex;
@@ -39,9 +40,11 @@
 }
 @media only screen and (max-width: 600px) {
   .nav-container {
-    
+    display: flex;
+    flex-direction: column;
   }
   .btn {
+    
     margin: 5px;
     padding: 7px 17px;
     display: inline-block;

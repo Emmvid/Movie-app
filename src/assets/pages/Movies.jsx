@@ -9,7 +9,7 @@ const Movies = ({ movie, addRecentlyViewed}) => {
   return (
     <> 
     <div className="movies" >
-   <img src={poster} alt={movie.path} /> 
+   <img src={poster} alt={movie.title} /> 
       <h5>{ movie.name || movie.title}</h5>
       <p> {movie.vote_average} <AiTwotoneStar/> imdb-rating</p>
       <h3><Link to={`/movie/${movie.id}`} onClick={() => addRecentlyViewed({movie})} >{movie.title || movie.name}</Link> </h3>

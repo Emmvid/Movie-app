@@ -5,9 +5,9 @@ import "../pages/movies.css";
 function PopularMovies({addRecentlyViewed, recentlyViewed, setRecentlyViewed}) {
     const [popular, setPopular] = useState([]);
     const apiKey = import.meta.env.VITE_API_KEY;
-    const fetchPopular = async() => {
-        const popularUrl = `
+    const popularUrl = `
         https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`
+    const fetchPopular = async() => {
         const popularData = await fetch(popularUrl);
         const popularMovies = await popularData.json();
         setPopular(popularMovies.results)
