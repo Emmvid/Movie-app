@@ -4,6 +4,7 @@ import Searchbox from "./SearchBox";
 import RecentlyViewed from "./RecentlyViewed";
 import "../pages/movies.css";
 import PopularMovies from "./PopularMovies";
+import Heading from "./Heading";
 
 
 function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
@@ -34,6 +35,7 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
     <>
     <main>
       <Searchbox setSearchValue={setSearchValue} />
+      <Heading name={"Search results:"} />
       <div className="row">
         {fetched &&
           fetched.map((movie) => {
@@ -46,7 +48,9 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
             );
           })}
       </div>
+      <Heading name={"Popular Movies:"} />
       <PopularMovies addRecentlyViewed={addRecentlyViewed}/>
+      <Heading name={"Recently viewed:"} />
       <RecentlyViewed recentlyViewed={recentlyViewed} />
     </main>
     </>

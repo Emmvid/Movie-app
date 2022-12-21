@@ -1,8 +1,9 @@
 import React from 'react'
+import "../pages/footer.css"
 
 function Footer() {
   return (
-    <div>Thi is a footer</div>
+    <div>Made by Emma Vidarsson</div>
   )
 }
 

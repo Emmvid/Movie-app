@@ -1,7 +1,6 @@
- /* .searchbox{
-    width: 300px;
-    
-}  */
+.searchbox{
+    padding-top: 1rem;
+}
 .group {
     display: flex;
     line-height: 28px;

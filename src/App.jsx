@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ErrorPage from "./assets/pages/error-page";
-import Heading from "./assets/pages/Heading";
+import Footer from "./assets/pages/Footer";
+import Navbar from "./assets/pages/Navbar"
 import FetchMovies from "./assets/components/FetchMovies";
 import About from "./assets/pages/About";
 import SingleMovie from "./assets/components/SingleMovie";
 import "./App.css";
+
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
   }
   return (
     <Router>
-      <Heading name="the Movie page" home="home" about="about"/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<FetchMovies addRecentlyViewed={addRecentlyViewed}
                 recentlyViewed={recentlyViewed} />} />
@@ -28,7 +30,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
         <Route path="/movie/:id" element={<SingleMovie />} />
       </Routes>
-      <Heading name="Made by Emma Vidarsson" home="home" about="about" />
+      <Footer/>
     </Router>
     
   );
