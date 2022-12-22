@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ErrorPage from "./assets/pages/error-page";
-import Footer from "./assets/pages/Footer";
-import Navbar from "./assets/pages/Navbar"
+import ErrorPage from "./assets/pages/Error-page";
+import Footer from "./assets/components/Footer";
+import Navbar from "./assets/components/Navbar"
 import FetchMovies from "./assets/components/FetchMovies";
 import About from "./assets/pages/About";
 import SingleMovie from "./assets/components/SingleMovie";

@@ -1,9 +1,9 @@
 * {
   box-sizing: border-box;
-  
 }
 
-
- body {
-  background: #0f2027; 
-} 
+body {
+  background: #0f2027;
+  min-height: 100vh;
+  position: relative;
+}
