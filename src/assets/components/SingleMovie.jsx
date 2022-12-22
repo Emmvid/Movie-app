@@ -7,9 +7,10 @@ const SingleMovie = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
+  const apiKey = import.meta.env.VITE_API_KEY;
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=cea77006d0fb470be9cf5312be7293d5&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
     )
       .then((res) => res.json())
       .then(

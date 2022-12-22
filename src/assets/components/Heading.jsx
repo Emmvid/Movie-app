@@ -1,5 +1,5 @@
 import React from 'react'
-import "../pages/heading.css"
+import "../components/heading.css"
 
 function Heading(props) {
   return (

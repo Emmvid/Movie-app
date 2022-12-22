@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { RiMovie2Line } from 'react-icons/ri'
-import "../pages/heading.css"
+import "../components/heading.css"
 
 const Navbar = ( ) => {
   return (
