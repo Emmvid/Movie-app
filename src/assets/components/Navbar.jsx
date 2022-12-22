@@ -6,7 +6,7 @@ import "../components/heading.css"
 const Navbar = ( ) => {
   return (
     <nav className="nav-container">
-      <span className="logo"> <RiMovie2Line /> The Movie page</span>
+      <span className="logo"> <RiMovie2Line /> The Movie Page</span>
         <ul className="menu">
           <li>
             <Link to="/" className="btn navButtons">Home</Link>

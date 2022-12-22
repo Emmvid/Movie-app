@@ -35,7 +35,7 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
     <>
     <main>
       <Searchbox setSearchValue={setSearchValue} />
-      <Heading name={"Search results:"} />
+      <Heading name={"Search Results:"} />
       <div className="row">
         {fetched &&
           fetched.map((movie) => {
@@ -50,7 +50,7 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
       </div>
       <Heading name={"Popular Movies:"} />
       <PopularMovies addRecentlyViewed={addRecentlyViewed}/>
-      <Heading name={"Recently viewed:"} />
+      <Heading name={"Recently Viewed:"} />
       <RecentlyViewed recentlyViewed={recentlyViewed} />
     </main>
     </>
