@@ -1,13 +1,12 @@
-import Movies from "../pages/Movies";
 import React, { useState, useEffect } from "react";
+import Movies from "../pages/Movies";
 import Searchbox from "./SearchBox";
 import RecentlyViewed from "./RecentlyViewed";
 import "../pages/movies.css";
 import PopularMovies from "./PopularMovies";
 import Heading from "./Heading";
 
-
-function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
+function FetchMovies({ addRecentlyViewed, recentlyViewed }) {
   const [fetched, setFetched] = useState([]);
   const [searchValue, setSearchValue] = useState("christmas");
 
@@ -22,37 +21,34 @@ function FetchMovies({ addRecentlyViewed, recentlyViewed, setRecentlyViewed }) {
     if (movies.Search) {
       setFetched(movies.Search);
     }
-   
   };
 
   useEffect(() => {
     fetchMovies(searchValue);
   }, [searchValue]);
 
- 
-
   return (
     <>
-    <main>
-      <Searchbox setSearchValue={setSearchValue} />
-      <Heading name={"Search Results:"} />
-      <div className="row">
-        {fetched &&
-          fetched.map((movie) => {
-            return (
-              <Movies
-                key={movie.id}
-                movie={movie}
-                addRecentlyViewed={addRecentlyViewed}
-              />
-            );
-          })}
-      </div>
-      <Heading name={"Popular Movies:"} />
-      <PopularMovies addRecentlyViewed={addRecentlyViewed}/>
-      <Heading name={"Recently Viewed:"} />
-      <RecentlyViewed recentlyViewed={recentlyViewed} />
-    </main>
+      <main>
+        <Searchbox setSearchValue={setSearchValue} />
+        <Heading name={"Search Results:"} />
+        <div className="row">
+          {fetched &&
+            fetched.map((movie) => {
+              return (
+                <Movies
+                  key={movie.id}
+                  movie={movie}
+                  addRecentlyViewed={addRecentlyViewed}
+                />
+              );
+            })}
+        </div>
+        <Heading name={"Popular Movies:"} />
+        <PopularMovies addRecentlyViewed={addRecentlyViewed} />
+        <Heading name={"Recently Viewed:"} />
+        <RecentlyViewed recentlyViewed={recentlyViewed} />
+      </main>
     </>
   );
 }
