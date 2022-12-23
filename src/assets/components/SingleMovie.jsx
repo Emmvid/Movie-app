@@ -8,6 +8,8 @@ const SingleMovie = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
   const apiKey = import.meta.env.VITE_API_KEY;
+  const noMovie = "Sorry, no details were provided for this film";
+  
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
@@ -32,7 +34,7 @@ const SingleMovie = () => {
   }
 
   if (movie) {
-    const noMovie = "Sorry, no details were provided for this film";
+   
     return (
       <div className="SingleMoviecontainer">
         <div className="singleMovie">

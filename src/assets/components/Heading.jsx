@@ -1,10 +1,8 @@
-import React from 'react'
-import "../components/heading.css"
+import React from "react";
+import "../components/heading.css";
 
 function Heading(props) {
-  return (
-    <h1 className='heading'> {props.name}</h1>
-  )
+  return <h1 className="heading"> {props.name}</h1>;
 }
 
-export default Heading
+export default Heading;

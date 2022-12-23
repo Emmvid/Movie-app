@@ -1,9 +1,11 @@
 import React from "react";
 import "./searchbox.css";
+
 const Searchbox = (props) => {
   const callSearchFunction = (event) => {
     props.setSearchValue(event.target.value);
   };
+
   return (
     <div className="searchbox">
       <div className="group">
